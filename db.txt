@@ -1,3 +1,2 @@
-Krzysztof 20
-Janusz 40
-mateusz 22
+
+mati 17

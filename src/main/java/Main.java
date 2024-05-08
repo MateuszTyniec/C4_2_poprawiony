@@ -14,24 +14,47 @@ class Main {
   public static void main(String[] args) {
     try {
       Service s = new Service();
-      Scanner scanner = new 
-        Scanner(System.in);
-        System.out.print("Podaj imie: ");
-          String name = scanner.nextLine();
-          System.out.print("Podaj wiek: ");
-        int age = scanner.nextInt();
-      s.addStudent(new Student("Krzysztof", 20));
-      s.addStudent(new Student("Janusz", 40));
-      Student student = new Student(name,age);
-      s.addStudent(student);
-      
+      Scanner scanner = new Scanner(System.in);
 
-      var students = s.getStudents();
-      for(Student current : students) {
-        System.out.println(current.ToString());
+      while (true) {
+        System.out.println("\nSwitch:");
+        System.out.println("1. Dodaj studenta");
+        System.out.println("2. Wyświetl studentow");
+        System.out.println("3. wyjscie");
+        System.out.print("Wybor: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine(); 
+
+        switch (choice) {
+          case 1:
+            System.out.print("imie studenta: ");
+            String name = scanner.nextLine();
+            System.out.print("wiek studenta: ");
+            int age = scanner.nextInt();
+            scanner.nextLine(); 
+            s.addStudent(new Student(name, age));
+            
+            break;
+          case 2:
+            var students = s.getStudents();
+            if (students.isEmpty()) {
+              System.out.println("brak studentow");
+            } else {
+              System.out.println("\nstudenci: ");
+              for (Student current : students) {
+                System.out.println(current.ToString());
+              }
+            }
+            break;
+          case 3:
+            System.exit(0);
+          default:
+            System.out.println("zly wybor");
+        }
       }
     } catch (IOException e) {
-
+      
     }
   }
 }
